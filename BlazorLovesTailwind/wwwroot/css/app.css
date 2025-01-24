@@ -558,8 +558,28 @@ video {
   position: static;
 }
 
+.m-16 {
+  margin: 4rem;
+}
+
+.mb-20 {
+  margin-bottom: 5rem;
+}
+
+.flex {
+  display: flex;
+}
+
 .table {
   display: table;
+}
+
+.w-1\/2 {
+  width: 50%;
+}
+
+.flex-grow {
+  flex-grow: 1;
 }
 
 .px-3 {
@@ -574,4 +594,18 @@ video {
 
 .ps-3 {
   padding-inline-start: 0.75rem;
+}
+
+.text-7xl {
+  font-size: 4.5rem;
+  line-height: 1;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.font-extrabold {
+  font-weight: 800;
 }
