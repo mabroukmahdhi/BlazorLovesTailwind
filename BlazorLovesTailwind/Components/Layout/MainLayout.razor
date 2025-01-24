@@ -1,23 +1,57 @@
-﻿@inherits LayoutComponentBase
+﻿@inherits LayoutComponentBase 
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
-
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+<div class="min-h-screen flex flex-col">
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-600 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="/" class="text-2xl font-bold">MyBlazorApp</a>
+                </div>
+                <div class="hidden md:flex space-x-4">
+                    <a href="/" class="text-white hover:text-gray-300">Home</a>
+                    <a href="/about" class="text-white hover:text-gray-300">About</a>
+                    <a href="/contact" class="text-white hover:text-gray-300">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-white focus:outline-none" @onclick="ToggleMenu">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden" style="display: @(isMenuOpen ? "block" : "none")">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="/" class="block px-3 py-2 rounded-md text-white hover:bg-blue-700">Home</a>
+                <a href="/about" class="block px-3 py-2 rounded-md text-white hover:bg-blue-700">About</a>
+                <a href="/contact" class="block px-3 py-2 rounded-md text-white hover:bg-blue-700">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-        <article class="content px-4">
+    <!-- Main Content -->
+    <main class="flex-grow bg-gray-100">
+        <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             @Body
-        </article>
+        </div>
     </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 py-6 text-center">
+            <p>&copy; 2025 MyBlazorApp. All rights reserved.</p>
+        </div>
+    </footer>
 </div>
 
-<div id="blazor-error-ui" data-nosnippet>
-    An unhandled error has occurred.
-    <a href="." class="reload">Reload</a>
-    <span class="dismiss">🗙</span>
-</div>
+@code {
+    private bool isMenuOpen = false;
+
+    private void ToggleMenu()
+    {
+        isMenuOpen = !isMenuOpen;
+    }
+}

@@ -1,11 +1,65 @@
 ﻿@page "/"
+@using BlazorLovesTailwind.Views.Components.CardComponents
 
-<PageTitle>Home</PageTitle>
+<div class="max-w-7xl mx-auto py-8">
+    <h1 class="text-3xl font-bold text-center mb-8">Microsoft MVPs</h1>
 
-<div class="flex flex-grow">
-    <div class="w-1/2 m-16">
-        <h1 class="font-extrabold text-7xl">Hello, world!</h1>
-        <p class="text-xl mb-20">Welcome to your new app.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        @foreach (var mvp in mvps)
+        {
+            <CardComponent Mvp="mvp" />
+        }
     </div>
 </div>
 
+@code {
+    private List<Mvp> mvps = new List<Mvp>
+    {
+        new Mvp { 
+            Name = "John Doe", 
+            Specialization = "Azure", 
+            ProfileUrl = "https://mvp.microsoft.com/johndoe", 
+            ImageUrl = "https://i.pravatar.cc/150", 
+            Badges = new List<string> { "Cloud Expert", "Top Contributor" }, 
+            Score = 95, 
+            TwitterUrl = "https://twitter.com/johndoe", 
+            LinkedInUrl = "https://linkedin.com/in/johndoe", 
+            GitHubUrl = "https://github.com/johndoe" 
+        },
+        new Mvp { 
+            Name = "Jane Smith", 
+            Specialization = "Blazor", 
+            ProfileUrl = "https://mvp.microsoft.com/janesmith", 
+            ImageUrl = "https://i.pravatar.cc/150", 
+            Badges = new List<string> { "Frontend Wizard", "Community Leader" }, 
+            Score = 89, 
+            TwitterUrl = "https://twitter.com/janesmith", 
+            LinkedInUrl = "https://linkedin.com/in/janesmith", 
+            GitHubUrl = "https://github.com/janesmith" 
+        },
+        new Mvp { 
+            Name = "Ahmed Ali", 
+            Specialization = "AI and ML", 
+            ProfileUrl = "https://mvp.microsoft.com/ahmedali", 
+            ImageUrl = "https://i.pravatar.cc/150", 
+            Badges = new List<string> { "AI Innovator", "Top Speaker" }, 
+            Score = 92, 
+            TwitterUrl = "https://twitter.com/ahmedali", 
+            LinkedInUrl = "https://linkedin.com/in/ahmedali", 
+            GitHubUrl = "https://github.com/ahmedali" 
+        }
+    };
+
+    public class Mvp
+    {
+        public string Name { get; set; }
+        public string Specialization { get; set; }
+        public string ProfileUrl { get; set; }
+        public string ImageUrl { get; set; }
+        public List<string> Badges { get; set; }
+        public int Score { get; set; }
+        public string TwitterUrl { get; set; }
+        public string LinkedInUrl { get; set; }
+        public string GitHubUrl { get; set; }
+    }
+}

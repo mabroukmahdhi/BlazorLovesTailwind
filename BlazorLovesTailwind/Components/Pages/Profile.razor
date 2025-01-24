@@ -1,0 +1,112 @@
+﻿@page "/profile/{MvpName}"
+
+<div class="max-w-7xl mx-auto py-8">
+    <div class="flex items-center space-x-6">
+        <img src="@Mvp.ImageUrl" alt="@Mvp.Name" class="h-32 w-32 rounded-full shadow-lg">
+        <div>
+            <h1 class="text-3xl font-bold">@Mvp.Name</h1>
+            <p class="text-gray-600">@Mvp.Specialization</p>
+            <div class="flex space-x-4 mt-4">
+                @if (!string.IsNullOrEmpty(Mvp.TwitterUrl))
+                {
+                    <a href="@Mvp.TwitterUrl" target="_blank" class="text-blue-500 hover:underline">Twitter</a>
+                }
+                @if (!string.IsNullOrEmpty(Mvp.LinkedInUrl))
+                {
+                    <a href="@Mvp.LinkedInUrl" target="_blank" class="text-blue-500 hover:underline">LinkedIn</a>
+                }
+                @if (!string.IsNullOrEmpty(Mvp.GitHubUrl))
+                {
+                    <a href="@Mvp.GitHubUrl" target="_blank" class="text-blue-500 hover:underline">GitHub</a>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-8">
+        <h2 class="text-2xl font-semibold mb-4">Blogs</h2>
+        <ul class="space-y-4">
+            @foreach (var blog in Blogs)
+            {
+                <li class="p-4 bg-white shadow rounded-lg">
+                    <h3 class="text-xl font-semibold">@blog.Title</h3>
+                    <p class="text-gray-600">@blog.Description</p>
+                    <a href="@blog.Url" target="_blank" class="text-blue-500 hover:underline">Read more</a>
+                </li>
+            }
+        </ul>
+    </div>
+
+    <div class="mt-8">
+        <h2 class="text-2xl font-semibold mb-4">Projects</h2>
+        <ul class="space-y-4">
+            @foreach (var project in Projects)
+            {
+                <li class="p-4 bg-white shadow rounded-lg">
+                    <h3 class="text-xl font-semibold">@project.Title</h3>
+                    <p class="text-gray-600">@project.Description</p>
+                    <a href="@project.Url" target="_blank" class="text-blue-500 hover:underline">View Project</a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string MvpName { get; set; }
+
+    private MvpProfile Mvp;
+    private List<Blog> Blogs = new List<Blog>();
+    private List<Project> Projects = new List<Project>();
+
+    protected override void OnInitialized()
+    {
+        // Dummy data for demonstration purposes
+        Mvp = new MvpProfile
+            {
+                Name = "John Doe",
+                Specialization = "Azure",
+                ImageUrl = "https://i.pravatar.cc/150",
+                TwitterUrl = "https://twitter.com/johndoe",
+                LinkedInUrl = "https://linkedin.com/in/johndoe",
+                GitHubUrl = "https://github.com/johndoe"
+            };
+
+        Blogs = new List<Blog>
+        {
+            new Blog { Title = "Understanding Azure Functions", Description = "Learn about serverless computing with Azure Functions.", Url = "https://example.com/azure-functions" },
+            new Blog { Title = "Blazor Components Basics", Description = "A guide to building reusable Blazor components.", Url = "https://example.com/blazor-components" }
+        };
+
+        Projects = new List<Project>
+        {
+            new Project { Title = "Azure Monitoring Tool", Description = "A tool for monitoring Azure resources.", Url = "https://github.com/johndoe/azure-monitoring-tool" },
+            new Project { Title = "Blazor Dashboard", Description = "A customizable dashboard built with Blazor.", Url = "https://github.com/johndoe/blazor-dashboard" }
+        };
+    }
+
+    public class MvpProfile
+    {
+        public string Name { get; set; }
+        public string Specialization { get; set; }
+        public string ImageUrl { get; set; }
+        public string TwitterUrl { get; set; }
+        public string LinkedInUrl { get; set; }
+        public string GitHubUrl { get; set; }
+    }
+
+    public class Blog
+    {
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Url { get; set; }
+    }
+
+    public class Project
+    {
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Url { get; set; }
+    }
+}

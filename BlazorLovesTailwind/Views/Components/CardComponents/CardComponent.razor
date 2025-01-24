@@ -1,0 +1,38 @@
+<div class="bg-white shadow-lg rounded-lg p-4 transform transition-transform hover:scale-105">
+    <img src="@Mvp.ImageUrl" alt="@Mvp.Name" class="h-32 w-32 mx-auto rounded-full mb-4">
+    <h2 class="text-xl font-semibold text-center">@Mvp.Name</h2>
+    <p class="text-gray-600 text-center">@Mvp.Specialization</p>
+    <div class="flex justify-center space-x-2 mt-2">
+        @foreach (var badge in Mvp.Badges)
+        {
+            <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full">@badge</span>
+        }
+    </div>
+    <p class="text-center mt-2">Score: <span class="font-bold">@Mvp.Score</span></p>
+    <div class="mt-4 flex justify-center space-x-4">
+        @if (!string.IsNullOrEmpty(Mvp.TwitterUrl))
+        {
+            <a href="@Mvp.TwitterUrl" target="_blank" class="text-blue-500 hover:text-blue-700 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline" fill="currentColor" viewBox="0 0 24 24" stroke="none">
+                    <path d="M24 4.557a9.93 9.93 0 01-2.828.775 4.932 4.932 0 002.165-2.723 9.864 9.864 0 01-3.127 1.194 4.92 4.92 0 00-8.384 4.482 13.957 13.957 0 01-10.141-5.144 4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.229-.616v.061a4.93 4.93 0 003.946 4.827 4.996 4.996 0 01-2.224.084 4.936 4.936 0 004.604 3.417A9.867 9.867 0 010 19.54a13.933 13.933 0 007.548 2.212c9.057 0 14.01-7.507 14.01-14.01 0-.213-.005-.425-.014-.636A10.025 10.025 0 0024 4.557z" />
+                </svg>
+            </a>
+        }
+        @if (!string.IsNullOrEmpty(Mvp.LinkedInUrl))
+        {
+            <a href="@Mvp.LinkedInUrl" target="_blank" class="text-blue-500 hover:text-blue-700 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline" fill="currentColor" viewBox="0 0 24 24" stroke="none">
+                    <path d="M19 0H5C2.243 0 0 2.243 0 5v14c0 2.757 2.243 5 5 5h14c2.757 0 5-2.243 5-5V5c0-2.757-2.243-5-5-5zm-9 19H7v-9h3v9zm-1.5-10.339c-1.074 0-1.942-.868-1.942-1.942s.868-1.941 1.942-1.941c1.074 0 1.942.868 1.942 1.941s-.868 1.942-1.942 1.942zM20 19h-3v-4.857c0-2.59-3-2.395-3 0V19h-3v-9h3v1.394c1.396-2.586 6-2.777 6 2.476V19z" />
+                </svg>
+            </a>
+        }
+        @if (!string.IsNullOrEmpty(Mvp.GitHubUrl))
+        {
+            <a href="@Mvp.GitHubUrl" target="_blank" class="text-blue-500 hover:text-blue-700 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline" fill="currentColor" viewBox="0 0 24 24" stroke="none">
+                    <path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.385.599.113.793-.26.793-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.384-1.333-1.752-1.333-1.752-1.089-.744.082-.729.082-.729 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.774.418-1.305.762-1.605-2.665-.305-5.467-1.335-5.467-5.935 0-1.311.469-2.382 1.235-3.221-.123-.303-.535-1.525.117-3.176 0 0 1.008-.322 3.3 1.23.957-.266 1.984-.399 3.006-.404 1.022.005 2.05.138 3.006.404 2.292-1.552 3.3-1.23 3.3-1.23.653 1.651.241 2.873.118 3.176.767.839 1.235 1.91 1.235 3.221 0 4.612-2.807 5.625-5.478 5.922.43.371.815 1.104.815 2.227 0 1.609-.015 2.91-.015 3.305 0 .319.193.694.8.576C20.565 21.796 24 17.302 24 12 24 5.373 18.627 0 12 0z" />
+                </svg>
+            </a>
+        }
+    </div>
+</div>
